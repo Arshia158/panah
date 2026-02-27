@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دانلود اپلیکیشن پناه | راهنمای جامع اضطراری</title>
+    <meta name="description" content="دانلود اپلیکیشن پناه. راهنمای هوشمند و آفلاین برای شرایط بحرانی، پناه‌گیری، کمک‌های اولیه و فرکانس‌های اضطراری.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #121212;
+            --card-hover: #1a1a1a;
+            --primary: #ef4444;
+            --primary-hover: #dc2626;
+            --accent: #3b82f6;
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --border: #262626;
+            --font: 'Vazirmatn', sans-serif;
+            --radius: 16px;
+            --shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #b91c1c);
+            color: white;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-main);
+            background: rgba(255,255,255,0.05);
+        }
+
+        header {
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover { color: var(--text-main); }
+
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            min-height: 90vh;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary);
+            display: block;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 90%;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.05);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            background: #000;
+            border-radius: 40px;
+            margin: 0 auto;
+            border: 8px solid #333;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #333;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%);
+            display: flex;
+            flex-direction: column;
+            padding: 40px 15px 20px;
+            position: relative;
+        }
+
+        .app-header {
+            height: 50px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            gap: 10px;
+        }
+        .app-icon { width: 24px; height: 24px; background: var(--primary); border-radius: 6px; }
+        .app-line { width: 60%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; }
+        
+        .app-alert {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 0.75rem;
+            color: #fca5a5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .app-card-sm { height: 60px; }
+        .app-card-lg { height: 100px; }
+
+        .features {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--bg-color), #0a0a0a);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: var(--card-hover);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .trust-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .trust-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .trust-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .trust-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .trust-visual {
+            background: linear-gradient(135deg, #111, #0a0a0a);
+            border-radius: var(--radius);
+            padding: 40px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(239, 68, 68, 0.1) 0%, var(--bg-color) 70%);
+        }
+
+        .cta-box {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-box h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 100px;
+                gap: 60px;
+            }
+            .hero-badges { justify-content: center; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { margin: 0 auto 40px; }
+            
+            .phone-mockup { width: 280px; height: 560px; }
+            
+            .trust-content { grid-template-columns: 1fr; }
+            .trust-visual { order: -1; }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2rem; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-content">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 22H22L12 2Z" fill="#ef4444"/>
+                    <path d="M12 6L5.5 19H18.5L12 6Z" fill="#050505"/>
+                </svg>
+                پناه <span>Panah</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#features">امکانات</a>
+                <a href="#privacy">حریم خصوصی</a>
+                <a href="#download">دانلود</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-content">
+                <div class="hero-badges">
+                    <div class="badge">🚨 شرایط اضطراری</div>
+                    <div class="badge">📴 کاملاً آفلاین</div>
+                </div>
+                <h1>امنیت شما،<br><span>اولویت ماست</span></h1>
+                <p>
+                    راهنمای جامع و هوشمند برای بحران‌ها. دسترسی سریع به نقاط پناهگاه، کمک‌های اولیه، شماره‌های اورژانس و فرکانس‌های رادیویی. بدون نیاز به اینترنت.
+                </p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <a href="base.apk" class="btn btn-primary" download>
+                        <span>⬇️ دانلود فایل نصبی (APK)</span>
+                    </a>
+                    <a href="#features" class="btn btn-outline">
+                        اطلاعات بیشتر
+                    </a>
+                </div>
+            </div>
+
+            <div class="phone-mockup">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:20px; color:white; font-size:12px;">
+                        <span>۹:۴۱</span>
+                        <span>📶 🔋</span>
+                    </div>
+                    <div class="app-header">
+                        <div class="app-icon"></div>
+                        <div class="app-line"></div>
+                    </div>
+                    <div class="app-alert">
+                        <span>🔴</span> آژیر خطر: فوری به پناهگاه بروید
+                    </div>
+                    <div class="app-card app-card-lg"></div>
+                    <div class="app-card app-card-sm"></div>
+                    <div class="app-card app-card-sm"></div>
+                    
+                    <div style="position:absolute; bottom:20px; left:20px; right:20px; height:50px; background:var(--primary); border-radius:25px; box-shadow:0 4px 15px rgba(0,0,0,0.5);"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <div class="section-title">
+                    <h2>چرا پناه؟</h2>
+                    <p>ابزاری حیاتی برای لحظات بحرانی که هیچ چیزی را به شانس نمی‌سپارد.</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🏚️</div>
+                        <h3>راهنمای پناه‌گیری</h3>
+                        <p>نقشه‌ی رفتار به هنگام آژیر خطر، مکان‌های امن در ساختمان و اقدامات فوری بعد از انفجار.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🩺</div>
+                        <h3>کمک‌های اولیه</h3>
+                        <p>دستورالعمل‌های قدم‌به‌قدم برای خونریزی، CPR، سوختگی، شکستگی و سایر موارد اضطراری.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏥</div>
+                        <h3>بانک بیمارستان‌ها</h3>
+                        <p>دسترسی به لیست بیمارستان‌های هر استان، شماره تماس و آدرس‌ها (قابلیت جستجو).</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📡</div>
+                        <h3>ارتباطات اضطراری</h3>
+                        <p>فرکانس‌های رادیو ملی و بین‌المللی، الگوی SMS اضطراری و مدیریت باتری در قطعی اینترنت.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎒</div>
+                        <h3>کیف اضطراری</h3>
+                        <p>چک‌لیست کامل اقلام ضروری برای بقا در ۷۲ ساعت اول همراه با نوار پیشرفت ذخیره‌سازی.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📴</div>
+                        <h3>بدون نیاز به اینترنت</h3>
+                        <p>تمامی داده‌های حیاتی روی دستگاه شما ذخیره می‌شوند و بدون اینترنت قابل دسترسی هستند.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="privacy" class="trust-section container">
+            <div class="trust-content">
+                <div class="trust-text">
+                    <h2>امنیت و حریم خصوصی</h2>
+                    <p style="margin-bottom: 30px; color: var(--text-muted);">
+                        ما معتقدیم ابزارهای امنیتی نباید امنیت کاربر را به خطر بیندازند. پناه با استانداردهای سخت‌گیرانه‌ای طراحی شده است.
+                    </p>
+                    <ul class="trust-list">
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>هیچ داده‌ای به سرور ارسال نمی‌شود (Local Storage).</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>بدون ردیابی، کوکی یا تبلیغات.</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>کاملاً رایگان و بدون درون‌پرداخت.</span>
+                        </li>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span>سبک و سریع (Open Web Technologies).</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="trust-visual">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">🔒</div>
+                    <h3>داده‌های شما، مال شماست</h3>
+                    <p style="color: var(--text-muted); margin-top: 10px;">
+                        یادداشت‌های شخصی، چک‌لیست‌ها و اطلاعات پزشکی شما فقط و فقط در حافظه مرورگر یا گوشی شما باقی می‌ماند.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="cta-section">
+            <div class="container cta-box">
+                <h2>آماده‌ی هر شرایطی باشید</h2>
+                <p style="margin-bottom: 30px; color: var(--text-muted); font-size: 1.1rem;">
+                    همین حالا پناه را نصب کنید. یک قدم کوچک امروز، امنیت بزرگ فردا.
+                </p>
+                <a href="base.apk" class="btn btn-primary" download style="font-size: 1.2rem; padding: 18px 40px; width: 100%; max-width: 350px;">
+                    دانلود مستقیم APK
+                </a>
+                <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.6;">
+                    نسخه ۳.۰ • حجم کم • نیاز به اینترنت ندارد
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; ۱۴۰۳ تمامی حقوق محفوظ است. ساخته شده برای ایمنی جامعه.</p>
+            <div style="margin-top: 10px; display: flex; gap: 20px; justify-content: center;">
+                <a href="#" style="opacity: 0.7;">قوانین استفاده</a>
+                <a href="#" style="opacity: 0.7;">درباره ما</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
